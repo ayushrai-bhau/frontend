@@ -1,7 +1,8 @@
 import axios from "axios";
 export const getJobDetailsById = async (jobId) => {
+
   try {
-    const reqUrl = `http://localhost:3000/api/v1/job/detail/${jobId}`;
+    const reqUrl = `${import.meta.env.VITE_HOST_LINK}/api/v1/job/detail/${jobId}`;
     const response = await axios.get(reqUrl);
 
     return response.data;
@@ -12,7 +13,7 @@ export const getJobDetailsById = async (jobId) => {
 
 export const getAllJobDetails = async (filter) => {
   try {
-    const reqUrl = `http://localhost:3000/api/v1/job/all-jobs?title=${filter?.title}&skills=${filter?.skills}`;
+    const reqUrl = `${import.meta.env.VITE_HOST_LINK}/api/v1/job/all-jobs?title=${filter?.title}&skills=${filter?.skills}`;
     const response = await axios.get(reqUrl);
     console.log(response.data);
     return response.data;
@@ -24,7 +25,7 @@ export const getAllJobDetails = async (filter) => {
 
 export const createJobDetails = async (payload) => {
   try {
-    const reqUrl = `http://localhost:3000/api/v1/job/create`;
+    const reqUrl = `${import.meta.env.VITE_HOST_LINK}/api/v1/job/create`;
     const token = localStorage.getItem("token");
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
    
@@ -39,7 +40,7 @@ export const createJobDetails = async (payload) => {
 
 export const updateJobDetails = async (jobId,updatedPayload) => {
     try {
-      const reqUrl = `http://localhost:3000/api/v1/job/edit/${jobId}`;
+      const reqUrl = `${import.meta.env.VITE_HOST_LINK}/api/v1/job/edit/${jobId}`;
       const token = localStorage.getItem("token");
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
      
